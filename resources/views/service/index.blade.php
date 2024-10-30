@@ -29,6 +29,10 @@
                 @if($services->isEmpty())
                     <p class="text-gray-600 dark:text-gray-400 p-4">No services available.</p>
                 @endif
+
+                <div class="mt-4">
+                    {{ $services->links() }}
+                </div>
             </div>
         </div>
     </div>

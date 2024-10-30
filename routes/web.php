@@ -18,5 +18,6 @@ Route::middleware([
 
     Route::get('/services', [ServiceController::class, 'view'])->name('services');
     Route::get('/service/{id}', [ServiceController::class, 'details'])->name('service.details');
-    Route::get('/services-create', [ServiceController::class, 'viewCreate'])->name('service.create');
+    Route::get('/service-create', [ServiceController::class, 'viewCreate'])->name('service.create');
+    Route::post('/service-store', [ServiceController::class, 'store'])->name('service.store');
 });
