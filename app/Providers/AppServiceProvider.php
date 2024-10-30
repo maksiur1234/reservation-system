@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Http\Repositories\Booking\BookingRepository;
+use App\Http\Repositories\Booking\BookingRepositoryInterface;
+use App\Http\Services\Booking\BookingServiceInterface;
+use App\Http\Services\Booking\BookingService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,7 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(BookingRepositoryInterface::class, BookingRepository::class);
+        $this->app->bind(BookingServiceInterface::class, BookingService::class);
     }
 
     /**

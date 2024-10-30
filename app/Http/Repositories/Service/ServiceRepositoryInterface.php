@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Repositories\Service;
 
-interface RepositoryServiceInterface
+interface ServiceRepositoryInterface
 {
     public function create($data);
     public function get();

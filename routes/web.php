@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Booking\BookingController;
 use App\Http\Controllers\Service\ServiceController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +21,8 @@ Route::middleware([
     Route::get('/service/{id}', [ServiceController::class, 'details'])->name('service.details');
     Route::get('/service-create', [ServiceController::class, 'viewCreate'])->name('service.create');
     Route::post('/service-store', [ServiceController::class, 'store'])->name('service.store');
+
+    Route::get('/bookings', [BookingController::class, 'view'])->name('bookings');
+    Route::get('/service/{service}/book', [BookingController::class, 'create'])->name('booking.create');
+    Route::post('/service/{service}/book', [BookingController::class, 'store'])->name('booking.store');
 });

@@ -3,17 +3,14 @@
 namespace App\Http\Controllers\Service;
 
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\Service\RepositoryService;
+use App\Http\Repositories\Service\ServiceRepository;
 use App\Http\Requests\Service\StoreServiceRequest;
-use App\Models\Service\Service;
 use Exception;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class ServiceController extends Controller
 {
     protected $repositoryService;
-    public function __construct(RepositoryService $repositoryService)
+    public function __construct(ServiceRepository $repositoryService)
     {
         $this->repositoryService = $repositoryService;
     }

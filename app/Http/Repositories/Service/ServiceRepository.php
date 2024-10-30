@@ -4,7 +4,7 @@ namespace App\Http\Repositories\Service;
 use App\Models\Service\Service;
 use Illuminate\Support\Facades\Auth;
 
-class RepositoryService implements RepositoryServiceInterface
+class ServiceRepository implements ServiceRepositoryInterface
 {
     public function create($data)
     {
