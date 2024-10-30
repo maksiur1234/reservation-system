@@ -17,4 +17,6 @@ Route::middleware([
     })->name('dashboard');
 
     Route::get('/services', [ServiceController::class, 'view'])->name('services');
+    Route::get('/service/{id}', [ServiceController::class, 'details'])->name('service.details');
+    Route::get('/services-create', [ServiceController::class, 'viewCreate'])->name('service.create');
 });
