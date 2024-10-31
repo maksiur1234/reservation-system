@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Booking;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Booking\StoreBookingRequest;
 use App\Http\Services\Booking\BookingServiceInterface;
+use App\Mail\BookingNotificationMail;
 use App\Models\Service\Service;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class BookingController extends Controller
 {
@@ -32,14 +34,14 @@ class BookingController extends Controller
         $service = Service::findOrFail($serviceId);
         return view('booking.create', ['service' => $service]);
     }
-
     public function store(StoreBookingRequest $request)
     {
         $validated = $request->validated();
         $validated['user_id'] = Auth::id(); 
-
-        $this->bookingService->createBooking($validated);
-
+    
+        $this->bookingService->create($validated);
+    
         return redirect()->route('services')->with('success', 'Service booked successfully!');
     }
+    
 }
