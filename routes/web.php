@@ -27,5 +27,6 @@ Route::middleware([
     Route::get('/service/{service}/book', [BookingController::class, 'create'])->name('booking.create');
     Route::post('/service/{service}/book', [BookingController::class, 'store'])->name('booking.store');
 
-    Route::post('/send-booking-mail-notification', [BookingMailController::class, 'sendMail'])->name('booking.send.notification');
+    Route::post('/bookings/{id}/accept', [BookingController::class, 'accept'])->name('bookings.accept');
+    Route::post('/bookings/{id}/reject', [BookingController::class, 'reject'])->name('bookings.reject');
 });

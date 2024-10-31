@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('service_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->dateTime('booking_date');
+            $table->enum('status', ['accepted', 'rejected', 'pending'])->default('pending');
             $table->timestamps();
         });
     }

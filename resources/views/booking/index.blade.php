@@ -15,6 +15,27 @@
                         <li class="py-4 px-6 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
                             <h4 class="text-xl font-semibold text-gray-800 dark:text-gray-200">{{ $booking->booking_date }}</h4>
                             <p class="text-gray-600 dark:text-gray-400">Service: {{ $booking->service->name }}</p>
+                            
+                            @if ($booking->status === 'pending')
+                                <form action="{{ route('bookings.accept', $booking->id) }}" method="POST" class="inline">
+                                    @csrf
+                                    <x-button>
+                                        {{ __('Accept') }}
+                                    </x-button>
+                                </form>
+                                
+                                <form action="{{ route('bookings.reject', $booking->id) }}" method="POST" class="inline">
+                                    @csrf
+                                    <x-button>
+                                        {{ __('Reject') }}
+                                    </x-button>
+                                </form>
+                            @elseif($booking->status === 'rejected')
+                                <span class="text-white dark:text-white-400">ODRZUCONO</span>
+        
+                            @elseif($booking->status === 'accepted')
+                            <span class="text-white dark:text-white-400">ZAAKCEPTOWANO</span>
+                            @endif
                         </li>
                     @endforeach
                 </ul>
@@ -30,6 +51,7 @@
                         <li class="py-4 px-6 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
                             <h4 class="text-xl font-semibold text-gray-800 dark:text-gray-200">{{ $booking->booking_date }}</h4>
                             <p class="text-gray-600 dark:text-gray-400">Service: {{ $booking->service->name }}</p>
+                            <span class="text-white dark:text-white-400">{{ $booking->status }}</span>
                         </li>
                     @endforeach
                 </ul>
