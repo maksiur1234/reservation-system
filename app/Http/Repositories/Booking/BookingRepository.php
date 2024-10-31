@@ -27,4 +27,23 @@ class BookingRepository implements BookingRepositoryInterface
         return Booking::create($data);
     }
 
+    public function accept($bookingId)
+    {
+        $booking = Booking::findOrFail($bookingId);
+
+        $booking->status = 'accepted';
+        $booking->save();
+
+        return $booking;
+    }
+
+    public function reject($bookingId)
+    {
+        $booking = Booking::findOrFail($bookingId);
+
+        $booking->status = 'rejected';
+        $booking->save();
+
+        return $booking;
+    }
 }

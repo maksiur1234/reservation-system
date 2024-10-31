@@ -17,6 +17,7 @@ class Booking extends Model
         'service_id',
         'user_id',
         'booking_date',
+        'status',
     ];
 
     public function service()

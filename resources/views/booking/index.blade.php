@@ -15,6 +15,24 @@
                         <li class="py-4 px-6 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
                             <h4 class="text-xl font-semibold text-gray-800 dark:text-gray-200">{{ $booking->booking_date }}</h4>
                             <p class="text-gray-600 dark:text-gray-400">Service: {{ $booking->service->name }}</p>
+                            
+                            @if ($booking->status === 'pending')
+                                <form action="{{ route('bookings.accept', $booking->id) }}" method="POST" class="inline">
+                                    @csrf
+                                    <x-button>
+                                        {{ __('Accept') }}
+                                    </x-button>
+                                </form>
+                                
+                                <form action="{{ route('bookings.reject', $booking->id) }}" method="POST" class="inline">
+                                    @csrf
+                                    <x-button>
+                                        {{ __('Reject') }}
+                                    </x-button>
+                                </form>
+                            @else
+                                <span class="text-gray-500 dark:text-gray-400">{{ $booking->status }}</span>
+                            @endif
                         </li>
                     @endforeach
                 </ul>
