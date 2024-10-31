@@ -14,7 +14,7 @@
                     @foreach ($receivedBookings as $booking)
                         <li class="py-4 px-6 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
                             <h4 class="text-xl font-semibold text-gray-800 dark:text-gray-200">{{ $booking->booking_date }}</h4>
-                            <p class="text-gray-600 dark:text-gray-400">Service: {{ $booking->service_name }}</p>
+                            <p class="text-gray-600 dark:text-gray-400">Service: {{ $booking->service->name }}</p>
                         </li>
                     @endforeach
                 </ul>
@@ -29,7 +29,7 @@
                     @foreach ($madeBookings as $booking)
                         <li class="py-4 px-6 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
                             <h4 class="text-xl font-semibold text-gray-800 dark:text-gray-200">{{ $booking->booking_date }}</h4>
-                            <p class="text-gray-600 dark:text-gray-400">Service: {{ $booking->service_name }}</p>
+                            <p class="text-gray-600 dark:text-gray-400">Service: {{ $booking->service->name }}</p>
                         </li>
                     @endforeach
                 </ul>
