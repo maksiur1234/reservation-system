@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Repositories\Service\ServiceRepository;
 use App\Http\Requests\Service\StoreServiceRequest;
 use Exception;
+use Illuminate\Validation\ValidationException;
 
 class ServiceController extends Controller
 {
@@ -38,10 +39,11 @@ class ServiceController extends Controller
         try {
             $validated = $request->validated();
             $this->repositoryService->create($validated);
-    
             return redirect()->route('services')->with('success', 'Service created successfully.');
+        } catch (ValidationException $e) {
+            return redirect()->back()->withErrors($e->validator)->withInput();
         } catch (Exception $e) {
-            throw new Exception($e);
+            return redirect()->back()->with('error', 'An error occurred while creating the service.');
         }
     }
 }

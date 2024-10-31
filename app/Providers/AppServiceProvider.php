@@ -6,6 +6,9 @@ use App\Http\Repositories\Booking\BookingRepository;
 use App\Http\Repositories\Booking\BookingRepositoryInterface;
 use App\Http\Services\Booking\BookingServiceInterface;
 use App\Http\Services\Booking\BookingService;
+use App\Models\Service\Service;
+use App\Policies\Service\ServicePolicy;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,6 +27,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Gate::policy(Service::class, ServicePolicy::class);
     }
 }

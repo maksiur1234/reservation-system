@@ -2,7 +2,11 @@
 
 namespace App\Http\Requests\Service;
 
+use App\Models\Service\Service;
+use App\Policies\Service\ServicePolicy;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\ValidationException;
 
 class StoreServiceRequest extends FormRequest
 {
@@ -11,6 +15,10 @@ class StoreServiceRequest extends FormRequest
      */
     public function authorize(): bool
     {
+        if ($this->user()->cannot('create', Service::class)) {
+            abort(403, 'This account type has no access to create a service.');
+        }
+    
         return true;
     }
 

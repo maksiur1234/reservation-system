@@ -14,6 +14,12 @@
                     </div>
                 @endif
 
+                @if ($errors->has('access'))
+                    <div class="text-red-600 mb-4">
+                        {{ $errors->first('access')}}
+                    </div>
+                @endif
+
                 <form action="{{ route('service.store') }}" method="POST">
                     @csrf
                     <div class="mb-4">
