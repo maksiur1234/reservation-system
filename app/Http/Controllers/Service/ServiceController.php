@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Service;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\Service\ServiceRepository;
 use App\Http\Requests\Service\StoreServiceRequest;
+use App\Http\Requests\Service\UpdateServiceRequest;
 use App\Models\Service\Service;
 use Exception;
 use Illuminate\Support\Facades\Auth;
@@ -38,19 +39,19 @@ class ServiceController extends Controller
 
         return view('service.edit', ['service' => $service]);
     }
-
-    public function update(Request $request, $id)
+    public function update(UpdateServiceRequest $request, Service $service)
     {
-        if(!Auth::user()->id == $request['user_id']){
-            return redirect()->back()->with('error', 'You have no access to update this service.');
-        }
-        
+        $validated = $request->validated();
+    
         try {
-            $this->repositoryService->update($request, $id);
+            $this->repositoryService->update($validated, $service->id);
+            return redirect()->route('service.index')->with('success', 'Service updated successfully.');
         } catch (Exception $e) {
             return redirect()->back()->with('error', 'An error occurred while updating the service.');
         }
     }
+    
+    
 
     public function viewCreate()
     {
