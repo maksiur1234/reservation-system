@@ -31,5 +31,7 @@ class ServiceRepository implements ServiceRepositoryInterface
         $service->name = $data['name'];
         $service->description =$data ['description'];
         $service->price = $data['price'];
+
+        $service->save();
     }
 }

@@ -22,8 +22,8 @@ Route::middleware([
     Route::get('/service/{id}', [ServiceController::class, 'details'])->name('service.details');
     Route::get('/service-create', [ServiceController::class, 'viewCreate'])->name('service.create');
     Route::post('/service-store', [ServiceController::class, 'store'])->name('service.store');
-    Route::get('/service/{service}/edit', [BookingController::class, 'edit'])->name('service.edit');
-    Route::put('/service/{service}/update', [BookingController::class, 'update'])->name('service.update');
+    Route::get('/service/{service}/edit', [ServiceController::class, 'edit'])->name('service.edit');
+    Route::put('/service/{service}/update', [ServiceController::class, 'update'])->name('service.update');
 
     Route::get('/bookings', [BookingController::class, 'view'])->name('bookings');
     Route::get('/service/{service}/book', [BookingController::class, 'create'])->name('booking.create');
