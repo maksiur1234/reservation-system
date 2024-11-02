@@ -24,4 +24,12 @@ class ServiceRepository implements ServiceRepositoryInterface
     {
         return Service::findOrFail($id);
     }
+
+    public function update($data, $id)
+    {
+        $service = $this->details($id);
+        $service->name = $data['name'];
+        $service->description =$data ['description'];
+        $service->price = $data['price'];
+    }
 }
