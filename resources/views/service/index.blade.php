@@ -27,9 +27,11 @@
                                 <a href="{{ route('service.edit', $service->id) }}" class="block">
                             </a>
                             <div>
-                                <a href="{{ route('service.edit', $service->id) }}" class="inline-flex items-center px-3 py-1 bg-yellow-500 text-white text-sm font-semibold rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-300">
-                                    Edit
-                                </a>
+                                @can('update', $service)
+                                    <a href="{{ route('service.edit', $service->id) }}" class="inline-flex items-center px-3 py-1 bg-yellow-500 text-white text-sm font-semibold rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-300">
+                                        Edit
+                                    </a>
+                                @endcan
                             </div>
                         </li>
                     @endforeach
