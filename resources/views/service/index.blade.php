@@ -24,6 +24,7 @@
                                 <h4 class="text-xl font-semibold text-gray-800 dark:text-gray-200">{{ $service->name }}</h4>
                                 <p class="text-gray-600 dark:text-gray-400 mt-1">{{ $service->description }}</p>
                                 <p class="text-gray-500 dark:text-gray-400">Price: {{ $service->price }} zł</p>
+                                <a href="{{ route('service.edit', $service->id) }}" class="block">
                             </a>
                         </li>
                     @endforeach
